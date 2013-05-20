@@ -4,6 +4,8 @@
  */
 package mastermind;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -12,33 +14,39 @@ import java.util.Random;
  */
 public class Rivi {
     private int leveys;
-    private int paikka0;
-    private int paikka1;
-    private int paikka2;
-    private int paikka3;
-    private int paikka4;
-    private int paikka5;
-    private int paikka6;
-    private int paikka7;
     
+    private ArrayList<Integer> rivi;
+        
    
     
     public Rivi(){
+        int a = 0;
         this.leveys = 4;
+        this.rivi = new ArrayList<Integer>();
         Random arpoja = new Random();
-        paikka0 = arpoja.nextInt(5);
-        paikka1 = arpoja.nextInt(5);
-        paikka2 = arpoja.nextInt(5);
-        paikka3 = arpoja.nextInt(5);
+        for (int i = 0; i < this.leveys; i++) {
+            a = arpoja.nextInt(6);
+            this.rivi.add(a);
+        }
+       
     }
     
-    public Rivi (int paikka0, int paikka1, int paikka2, int paikka3) {
-        this.paikka0 = paikka0;
-        this.paikka1 = paikka1;
-        this.paikka2 = paikka2;
-        this.paikka3 = paikka3;
+    public Rivi (int p0, int p1, int p2, int p3) {
+       this.rivi = new ArrayList<Integer>();
+       this.rivi.add(p0);
+       this.rivi.add(p1);
+       this.rivi.add(p2);
+       this.rivi.add(p3);
     }
+    
+    @Override
     public String toString(){
-        return this.paikka0 + " " + this.paikka1 + " " + this.paikka2 + " " + this.paikka3;
+        String a = "";
+        for (int i = 0; i < rivi.size(); i++) {
+            a = a + this.rivi.get(i) + " ";
+        }
+        return a;
     }
+    
+    
 }
