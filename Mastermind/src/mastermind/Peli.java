@@ -13,21 +13,22 @@ import java.util.Scanner;
  */
 public class Peli {
     private Pelilauta pelilauta;
-    private int rivinpituus;
+    private int leveys;
     private int rivienmaara;
     private int varienmaara;
     
-    public Peli(){
+    public Peli(int rivienmaara, int leveys, int varienmaara){
         Scanner lukija = new Scanner(System.in);
         
-        this.rivienmaara = 10;
-        this.rivinpituus = 4;
-        this.varienmaara = 6;
-        this.pelilauta = new Pelilauta(this.rivienmaara, this.rivinpituus);
+        this.rivienmaara = rivienmaara;
+        this.leveys = leveys;
+        this.varienmaara = varienmaara;
+        this.pelilauta = new Pelilauta(this.varienmaara, this.leveys);
         
         int i = 0;
         String syote = "";
         while (true) {
+            
             i++;
             if (loppuikoYritykset(i)) {
                 System.out.println("Hävisit pelin, oikea rivi oli " + this.pelilauta.arvottuRivi());
@@ -38,7 +39,7 @@ public class Peli {
                 System.out.println("Syöte on virheellinen!");
                 i--;
             } else {
-                this.pelilauta.lisaaRivi(uusiRivi(syote));
+                this.pelilauta.lisaaRivi(syote);
             }
             
             
@@ -71,7 +72,7 @@ public class Peli {
         return true;
     }
     public boolean syotteenPituus(String syote) {
-        if (syote.length() != this.rivinpituus) {
+        if (syote.length() != this.leveys) {
             return false;
         }
         return true;
@@ -86,7 +87,7 @@ public class Peli {
         return true;
     }
     public boolean oikeitaArvoja(String syote) {
-        int x = 0;
+        int x = -1;
         for (int i = 0; i < syote.length(); i++) {
             x = Integer.parseInt("" + syote.charAt(i));
             if (x < 0 || x >= this.varienmaara) {
@@ -95,14 +96,5 @@ public class Peli {
         }
         return true;
     }
-    public ArrayList<Integer> uusiRivi(String syote) {
-        ArrayList<Integer> uusiRivi = new ArrayList<Integer>();
-        int x = 0;
-        for (int i = 0; i < syote.length(); i++) {
-            x = Integer.parseInt("" + syote.charAt(i));
-            uusiRivi.add(x);
-        }
-        return uusiRivi;
-        
-    }
+    
 }

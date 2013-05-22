@@ -15,7 +15,7 @@ public class Mastermind {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Peli uusiPeli = new Peli();
+        Peli uusiPeli = new Peli(2, 4, 6);
         
         System.out.println(uusiPeli);
     }

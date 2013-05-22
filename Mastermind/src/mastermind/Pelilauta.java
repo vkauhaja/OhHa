@@ -13,31 +13,35 @@ import java.util.List;
  */
 public class Pelilauta {
     private int rivit;
-    private int nappulat;
-    private List<ArrayList<Integer>> peli;
+    private int leveys;
+    private int varienmaara;
+    private List<Rivi> peli;
     private Rivi arvottu;
     
-    public Pelilauta(int rivit, int nappulat) {
+    public Pelilauta(int varienmaara, int leveys) {
+        this.arvottu = new Rivi(leveys, varienmaara);
         this.rivit = rivit;
-        this.nappulat = nappulat;
-        this.peli = new ArrayList<ArrayList<Integer>>();
-        
-        this.arvottu = new Rivi();
+        this.varienmaara = varienmaara;
+        this.peli = new ArrayList<Rivi>();
     }
+    
     public String toString(){
         String palautus = "";
-        for (ArrayList<Integer> s: this.peli) {
-            palautus = palautus + s;
-            
+        for(Rivi s: this.peli) {
+            palautus = palautus + s.toString() + " \n";
         }
+        
         palautus = palautus + this.arvottu.toString();
         return palautus;
     }
+    
     public String arvottuRivi(){
         return this.arvottu.toString();
     }
-    public void lisaaRivi(ArrayList<Integer> uusiRivi) {
-        this.peli.add(uusiRivi);
+    
+    public void lisaaRivi(String syote) {
+        Rivi uusi = new Rivi(syote);
+        this.peli.add(uusi);
     }
     
     

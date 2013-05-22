@@ -19,24 +19,26 @@ public class Rivi {
         
    
     
-    public Rivi(){
-        int a = 0;
-        this.leveys = 4;
+    public Rivi(int leveys, int varienmaara){
+        int a = -1;
+        this.leveys = leveys;
         this.rivi = new ArrayList<Integer>();
         Random arpoja = new Random();
         for (int i = 0; i < this.leveys; i++) {
-            a = arpoja.nextInt(6);
+            a = arpoja.nextInt(varienmaara);
             this.rivi.add(a);
         }
        
     }
     
-    public Rivi (int p0, int p1, int p2, int p3) {
+    public Rivi (String syote) {
        this.rivi = new ArrayList<Integer>();
-       this.rivi.add(p0);
-       this.rivi.add(p1);
-       this.rivi.add(p2);
-       this.rivi.add(p3);
+       int x = syote.length();
+       int y = -1;
+        for (int i = 0; i < x; i++) {
+            y = Integer.parseInt(syote.charAt(i) + "");
+            this.rivi.add(y);
+        }
     }
     
     @Override
