@@ -20,7 +20,6 @@ public class Pelilauta {
     
     public Pelilauta(int varienmaara, int leveys) {
         this.arvottu = new Rivi(leveys, varienmaara);
-        this.rivit = rivit;
         this.varienmaara = varienmaara;
         this.peli = new ArrayList<Rivi>();
     }

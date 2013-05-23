@@ -18,7 +18,7 @@ public class Peli {
     private int varienmaara;
     
     public Peli(int rivienmaara, int leveys, int varienmaara){
-        Scanner lukija = new Scanner(System.in);
+        
         
         this.rivienmaara = rivienmaara;
         this.leveys = leveys;
@@ -26,9 +26,10 @@ public class Peli {
         this.pelilauta = new Pelilauta(this.varienmaara, this.leveys);
         
         int i = 0;
+        Scanner lukija = new Scanner(System.in);
         String syote = "";
+        
         while (true) {
-            
             i++;
             if (loppuikoYritykset(i)) {
                 System.out.println("Hävisit pelin, oikea rivi oli " + this.pelilauta.arvottuRivi());
@@ -44,8 +45,12 @@ public class Peli {
             
             
         }
-        
     }       
+    
+        
+        
+        
+        
         
     
     @Override
