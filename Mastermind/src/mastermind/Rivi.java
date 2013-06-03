@@ -49,6 +49,26 @@ public class Rivi {
         }
         return a;
     }
-    
+    public int alkio(int indeksi){
+        return this.rivi.get(indeksi);
+    }
+    public void poista(int indeksi){
+        this.rivi.remove(indeksi);
+    }
+    public String klooni(){
+        String a = "";
+        for (int i = 0; i < rivi.size(); i++) {
+            a = a + this.rivi.get(i) + "";
+        }
+        return a;
+    }
+    public boolean sisaltyy(int indeksi){
+        if (this.rivi.contains(indeksi)) {
+            int x = this.rivi.indexOf(indeksi);
+            this.rivi.remove(x);
+            return true;
+        }
+        return false;
+    }
     
 }

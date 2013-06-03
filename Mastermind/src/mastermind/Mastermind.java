@@ -4,6 +4,8 @@
  */
 package mastermind;
 
+import java.util.Scanner;
+
 /**
  *
  * @author vkauhaja
@@ -15,8 +17,13 @@ public class Mastermind {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Peli uusiPeli = new Peli(2, 4, 6);
+        Scanner llukija = new Scanner(System.in);
+        System.out.println("Tervetuloa pelaamaan Mastermindia. Valitse kuinka monta yritystä haluat, kuinka monta arvattavaa numeroa on, sekä kuinka monta eri mahdollista numeroa on rivissä.");
+        String maareet = llukija.nextLine();
         
-        System.out.println(uusiPeli);
+        Peli uusiPeli = new Peli(10, 4, 6);
+        uusiPeli.pelaa();
+        
     }
+    
 }

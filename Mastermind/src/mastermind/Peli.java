@@ -25,10 +25,13 @@ public class Peli {
         this.varienmaara = varienmaara;
         this.pelilauta = new Pelilauta(this.varienmaara, this.leveys);
         
-        int i = 0;
+        
+        
+    }       
+    public void pelaa(){
+       int i = 0;
         Scanner lukija = new Scanner(System.in);
         String syote = "";
-        
         while (true) {
             i++;
             if (loppuikoYritykset(i)) {
@@ -41,17 +44,39 @@ public class Peli {
                 i--;
             } else {
                 this.pelilauta.lisaaRivi(syote);
+                if (voititko(syote)) {
+                    System.out.println("Onneksi olkoon, " + syote + " oli oikea rivi.");
+                    break;
+                }
+                tulos(syote);
             }
             
             
+        } 
+    }
+       
+        
+    public boolean voititko(String syote){
+        if (this.pelilauta.tulokset(syote).equals("40")){
+            return true;
         }
-    }       
-    
+        return false;
+    }   
         
-        
-        
-        
-        
+    public void tulos(String syote){
+        String x = this.pelilauta.tulokset(syote);
+        String a = "" + x.charAt(0);
+        String b = "" + x.charAt(1);
+        if(a.equals("1") && b.equals("1")){
+            System.out.println(a + " oikea arvo oikealla paikalla, " + b + " oikea arvo väärällä paikalla.");
+        } else if (a.equals("1")) {
+            System.out.println(a + " oikea arvo oikealla paikalla, " + b + " oikeaa arvoa väärällä paikalla.");
+        } else if (b.equals("1")) {
+            System.out.println(a + " oikeaa arvoa oikealla paikalla, " + b + " oikea arvo väärällä paikalla.");
+        } else {
+            System.out.println(a + " oikeaa arvoa oikealla paikalla, " + b + " oikeaa arvoa väärällä paikalla.");
+        }
+    }   
     
     @Override
     public String toString(){
@@ -101,5 +126,46 @@ public class Peli {
         }
         return true;
     }
-    
+    public boolean maareetKorrekti(String syote) {
+        if (!maareenPituus(syote)) {
+            return false;
+        }
+        if (!maareenMerkit(syote)) {
+            return false;
+        }
+        if (!oikeatArvoja(syote)) {
+            return false;
+        }
+        return true;
+    }
+    public boolean maareenPituus(String syote) {
+        if (syote.length() != 3) {
+            return false;
+        }
+        return true;
+    }
+    public boolean maareenMerkit(String syote) {
+        try {
+            Integer.parseInt(syote);
+        }
+        catch(NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+    public boolean oikeatArvoja(String syote) {
+        int x = syote.charAt(0);
+        int y = syote.charAt(1);
+        int z = syote.charAt(2);
+        if (x < 1 || x > 20){
+            return false;
+        }
+         if (y < 1 || y > 20){
+            return false;
+        }
+         if (z < 1 || z > 20){
+            return false;
+        }
+        return true;
+    }
 }
