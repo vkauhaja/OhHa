@@ -40,7 +40,11 @@ public class Pelilauta {
     public String arvottuRivi(){
         return this.arvottu.toString();
     }
-    
+    // Tämä metodi on tarkoitettu puhtaasti testikäyttöön. Lähinnä luomaan testeissä satunnaisia rivejä. Saas nähdä keksiikö muuta käyttöä.
+    public String satunnainen(){
+        Rivi satunnainen = new Rivi(this.leveys, this.varienmaara, this.vaikeusaste);
+        return satunnainen.toString();
+    }
     public void lisaaRivi(String syote) {
         Rivi uusi = new Rivi(syote);
         this.peli.add(uusi);

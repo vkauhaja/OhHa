@@ -33,11 +33,11 @@ public class PeliTest {
     
     @Before
     public void setUp() {
-       ByteArrayInputStream bais = new ByteArrayInputStream("1\n".getBytes());
-       InputStream old = System.in;
-       System.setIn(bais);
+       // ByteArrayInputStream bais = new ByteArrayInputStream("1\n".getBytes());
+       // InputStream old = System.in;
+       // System.setIn(bais);
        peli = new Peli(2, 4, 6, 1);
-       System.setIn(old);
+       // System.setIn(old);
     }
     
     @After

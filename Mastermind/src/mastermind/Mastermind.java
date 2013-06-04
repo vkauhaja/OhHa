@@ -17,7 +17,6 @@ public class Mastermind {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner llukija = new Scanner(System.in);
         System.out.println("Tervetuloa pelaamaan Mastermindia.");
         int d = -1;
         int a = -1;
@@ -188,7 +187,7 @@ public class Mastermind {
         }
         return true;
     }
-     public static boolean oikeitaArvoja4(String syote){
+    public static boolean oikeitaArvoja4(String syote){
         int arvo = Integer.parseInt(syote);
         if (arvo < 0 || arvo > 1){
             return false;

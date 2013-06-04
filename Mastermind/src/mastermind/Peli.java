@@ -103,6 +103,7 @@ public class Peli {
         if (!oikeitaArvoja(syote)) {
             return false;
         }
+       
         return true;
     }
     public boolean syotteenPituus(String syote) {

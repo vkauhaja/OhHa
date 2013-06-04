@@ -19,7 +19,8 @@ public class RiviTest {
     
     public RiviTest() {
     }
-    
+    Rivi rivi1;
+    Rivi rivi2;
     @BeforeClass
     public static void setUpClass() {
     }
@@ -30,6 +31,8 @@ public class RiviTest {
     
     @Before
     public void setUp() {
+        rivi1 = new Rivi(4,6,1);
+        rivi2 = new Rivi(4,6,1);
     }
     
     @After
@@ -38,7 +41,16 @@ public class RiviTest {
 
    
     @Test
-    public void testToString() {
-       
+    public void testToString1() {
+       assertTrue(rivi1.toString().length() == 4);
+    }
+    @Test
+    public void testToString2() {
+       assertFalse(rivi1.toString().contains("6"));
+    }
+    @Test
+    public void testPoista(){
+        rivi2.poista(0);
+        assertTrue(rivi2.toString().length() == 3);
     }
 }

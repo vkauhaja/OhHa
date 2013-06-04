@@ -58,7 +58,7 @@ public class Rivi {
     public String toString(){
         String a = "";
         for (int i = 0; i < rivi.size(); i++) {
-            a = a + this.rivi.get(i) + " ";
+            a = a + this.rivi.get(i) + "";
         }
         return a;
     }

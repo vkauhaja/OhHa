@@ -19,7 +19,7 @@ public class PelilautaTest {
     
     public PelilautaTest() {
     }
-    
+    Pelilauta pelilauta;
     @BeforeClass
     public static void setUpClass() {
     }
@@ -30,6 +30,7 @@ public class PelilautaTest {
     
     @Before
     public void setUp() {
+        pelilauta = new Pelilauta(6, 4, 1);
     }
     
     @After
@@ -47,5 +48,18 @@ public class PelilautaTest {
     @Test
     public void testLisaaRivi() {
        
+    }
+    @Test
+    public void testTulokset1(){
+        String testi = pelilauta.arvottuRivi();
+        assertEquals("40" ,pelilauta.tulokset(testi));
+    }
+    public void testTulokset2(){
+        String testi = pelilauta.satunnainen();
+        assertFalse(pelilauta.tulokset(testi).contains("5"));
+    }
+    public void testTulokset3(){
+        String testi = pelilauta.satunnainen();
+        assertTrue(pelilauta.tulokset(testi).length() == 2);
     }
 }
