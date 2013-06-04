@@ -16,21 +16,24 @@ public class Peli {
     private int leveys;
     private int rivienmaara;
     private int varienmaara;
+    private int vaikeusaste;
     
-    public Peli(int rivienmaara, int leveys, int varienmaara){
+    public Peli(int rivienmaara, int leveys, int varienmaara, int vaikeusaste){
         
-        
+        this.vaikeusaste = vaikeusaste;
         this.rivienmaara = rivienmaara;
         this.leveys = leveys;
         this.varienmaara = varienmaara;
-        this.pelilauta = new Pelilauta(this.varienmaara, this.leveys);
+        this.pelilauta = new Pelilauta(this.varienmaara, this.leveys, this.vaikeusaste);
         
         
         
     }       
     public void pelaa(){
-       int i = 0;
+        System.out.println("Peli alkaa. Yhdessä rivissä on " + this.leveys + " numeroa, numerot ovat väliltä 0-"+ (this.varienmaara-1) + " ja sinulla on " + this.rivienmaara + " yritystä arvata oikea rivi.");
+        int i = 0;
         Scanner lukija = new Scanner(System.in);
+        
         String syote = "";
         while (true) {
             i++;
@@ -45,7 +48,7 @@ public class Peli {
             } else {
                 this.pelilauta.lisaaRivi(syote);
                 if (voititko(syote)) {
-                    System.out.println("Onneksi olkoon, " + syote + " oli oikea rivi.");
+                    System.out.println("Onneksi olkoon, " + syote + " oli oikea rivi. Tarvitsit " + i + " yritystä päätelläksesi oikean rivin.");
                     break;
                 }
                 tulos(syote);
@@ -57,7 +60,8 @@ public class Peli {
        
         
     public boolean voititko(String syote){
-        if (this.pelilauta.tulokset(syote).equals("40")){
+        String s = this.leveys + "";
+        if (this.pelilauta.tulokset(syote).equals(s +"0")){
             return true;
         }
         return false;

@@ -17,12 +17,14 @@ public class Pelilauta {
     private int varienmaara;
     private List<Rivi> peli;
     private Rivi arvottu;
+    private int vaikeusaste;
     
-    public Pelilauta(int varienmaara, int leveys) {
-        this.arvottu = new Rivi(leveys, varienmaara);
+    public Pelilauta(int varienmaara, int leveys, int vaikeusaste) {
+        this.arvottu = new Rivi(leveys, varienmaara, vaikeusaste);
         this.varienmaara = varienmaara;
         this.peli = new ArrayList<Rivi>();
         this.leveys = leveys;
+        this.vaikeusaste = vaikeusaste;
     }
     
     public String toString(){

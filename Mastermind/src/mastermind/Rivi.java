@@ -19,15 +19,28 @@ public class Rivi {
         
    
     
-    public Rivi(int leveys, int varienmaara){
+    public Rivi(int leveys, int varienmaara, int vaikeusaste){
         int a = -1;
         this.leveys = leveys;
         this.rivi = new ArrayList<Integer>();
         Random arpoja = new Random();
-        for (int i = 0; i < this.leveys; i++) {
-            a = arpoja.nextInt(varienmaara);
-            this.rivi.add(a);
-        }
+        if(vaikeusaste == 1) {
+            for (int i = 0; i < this.leveys; i++) {
+                a = arpoja.nextInt(varienmaara);
+                this.rivi.add(a);
+            }
+        } else {
+            for (int i = 0; i < this.leveys; i++) {
+                a = arpoja.nextInt(varienmaara);
+                if (!this.rivi.contains(a)) {
+                    this.rivi.add(a);
+                } else {
+                    i--;
+                }
+         }
+        
+        
+        }   
        
     }
     
