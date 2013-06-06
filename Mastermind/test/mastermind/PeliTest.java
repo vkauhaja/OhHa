@@ -6,6 +6,7 @@ package mastermind;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,6 +22,7 @@ public class PeliTest {
     
     public PeliTest() {
     }
+    Scanner lukija;
     Peli peli;
     @BeforeClass
     public static void setUpClass() {
@@ -36,7 +38,7 @@ public class PeliTest {
        // ByteArrayInputStream bais = new ByteArrayInputStream("1\n".getBytes());
        // InputStream old = System.in;
        // System.setIn(bais);
-       peli = new Peli(2, 4, 6, 1);
+       peli = new Peli(2, 4, 6, 1, lukija);
        // System.setIn(old);
     }
     

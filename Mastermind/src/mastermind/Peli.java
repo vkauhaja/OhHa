@@ -17,13 +17,15 @@ public class Peli {
     private int rivienmaara;
     private int varienmaara;
     private int vaikeusaste;
+    private Scanner lukija;
     
-    public Peli(int rivienmaara, int leveys, int varienmaara, int vaikeusaste){
+    public Peli(int rivienmaara, int leveys, int varienmaara, int vaikeusaste, Scanner lukija){
         
         this.vaikeusaste = vaikeusaste;
         this.rivienmaara = rivienmaara;
         this.leveys = leveys;
         this.varienmaara = varienmaara;
+        this.lukija = lukija;
         this.pelilauta = new Pelilauta(this.varienmaara, this.leveys, this.vaikeusaste);
         
         
@@ -32,7 +34,7 @@ public class Peli {
     public void pelaa(){
         System.out.println("Peli alkaa. Yhdessä rivissä on " + this.leveys + " numeroa, numerot ovat väliltä 0-"+ (this.varienmaara-1) + " ja sinulla on " + this.rivienmaara + " yritystä arvata oikea rivi.");
         int i = 0;
-        Scanner lukija = new Scanner(System.in);
+       
         
         String syote = "";
         while (true) {
@@ -131,46 +133,5 @@ public class Peli {
         }
         return true;
     }
-    public boolean maareetKorrekti(String syote) {
-        if (!maareenPituus(syote)) {
-            return false;
-        }
-        if (!maareenMerkit(syote)) {
-            return false;
-        }
-        if (!oikeatArvoja(syote)) {
-            return false;
-        }
-        return true;
-    }
-    public boolean maareenPituus(String syote) {
-        if (syote.length() != 3) {
-            return false;
-        }
-        return true;
-    }
-    public boolean maareenMerkit(String syote) {
-        try {
-            Integer.parseInt(syote);
-        }
-        catch(NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-    public boolean oikeatArvoja(String syote) {
-        int x = syote.charAt(0);
-        int y = syote.charAt(1);
-        int z = syote.charAt(2);
-        if (x < 1 || x > 20){
-            return false;
-        }
-         if (y < 1 || y > 20){
-            return false;
-        }
-         if (z < 1 || z > 20){
-            return false;
-        }
-        return true;
-    }
+    
 }
