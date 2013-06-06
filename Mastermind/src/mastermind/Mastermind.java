@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Mastermind {
     
     /**
+     * Hyvin riisuttu Main. Ensin luodaan koko ohjelman ainoa lukija, sitten kysytään attribuutit, ja luodaan peli. Lisäksi mainissa luonnollisesti käynnistetään peli.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -20,7 +21,7 @@ public class Mastermind {
         Scanner lukija = new Scanner(System.in);
         System.out.println("Tervetuloa pelaamaan Mastermindia.");
         Attribuutit attribuutit = new Attribuutit(lukija);
-        Peli uusiPeli = new Peli(attribuutit.yritystenmaara(), attribuutit.rivi(), attribuutit.varit(), attribuutit.vaikeus(), lukija);
+        Peli uusiPeli = new Peli(attribuutit.yritystenMaaraInt(), attribuutit.rivinPituusInt(), attribuutit.vaihtoEhtojenMaaraInt(), attribuutit.vaikeusasteInt(), lukija);
         uusiPeli.pelaa();
         
     }

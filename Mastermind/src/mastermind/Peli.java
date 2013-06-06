@@ -8,31 +8,43 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * Tekstikäyttöliittymäluokka
  * @author vkauhaja
  */
 public class Peli {
     private Pelilauta pelilauta;
-    private int leveys;
+    private int pituus;
     private int rivienmaara;
-    private int varienmaara;
+    private int vaihtoehtojenmaara;
     private int vaikeusaste;
     private Scanner lukija;
     
-    public Peli(int rivienmaara, int leveys, int varienmaara, int vaikeusaste, Scanner lukija){
+    /**
+     * Luokan konstruktori. Saa attribuuttina mm ohjelman ainoan scannerin
+     * @param rivienmaara kuinka monta yritystä pelissä on
+     * @param pituus rivin pituus
+     * @param varienmaara vaihtoehtojen (numeroita tai värejä) määrä
+     * @param vaikeusaste helpompi vai normaali peli
+     * @param lukija scanner, joka periytyy mainista.
+     */
+    
+    public Peli(int rivienmaara, int pituus, int vaihtoehtojenmaara, int vaikeusaste, Scanner lukija){
         
         this.vaikeusaste = vaikeusaste;
         this.rivienmaara = rivienmaara;
-        this.leveys = leveys;
-        this.varienmaara = varienmaara;
+        this.pituus = pituus;
+        this.vaihtoehtojenmaara = vaihtoehtojenmaara;
         this.lukija = lukija;
-        this.pelilauta = new Pelilauta(this.varienmaara, this.leveys, this.vaikeusaste);
+        this.pelilauta = new Pelilauta(this.vaihtoehtojenmaara, this.pituus, this.vaikeusaste);
         
         
         
-    }       
+    }  
+    /**
+     * Pelimekaniikkaa pyörittävä tekstikäyttöliittymämetodi. Pelin sielu henki ja runko. while-loop pyörii kunnes pelaaja osuu oikeaan tai yritykset loppuvat. Jokaisen rivin jälkeen peli palauttaa tulokset. Metodissa on myös tarkistusmetodi joka varmistaa että käyttäjän antama rivi on oikeaa muotoa, ei vääriä numeroita tai liian paljon.
+     */
     public void pelaa(){
-        System.out.println("Peli alkaa. Yhdessä rivissä on " + this.leveys + " numeroa, numerot ovat väliltä 0-"+ (this.varienmaara-1) + " ja sinulla on " + this.rivienmaara + " yritystä arvata oikea rivi.");
+        System.out.println("Peli alkaa. Yhdessä rivissä on " + this.pituus + " numeroa, numerot ovat väliltä 0-"+ (this.vaihtoehtojenmaara-1) + " ja sinulla on " + this.rivienmaara + " yritystä arvata oikea rivi.");
         int i = 0;
        
         
@@ -40,7 +52,7 @@ public class Peli {
         while (true) {
             i++;
             if (loppuikoYritykset(i)) {
-                System.out.println("Hävisit pelin, oikea rivi oli " + this.pelilauta.arvottuRivi());
+                System.out.println("Hävisit pelin, oikea rivi oli " + this.pelilauta.arvottu());
                 break;
             } 
             syote = lukija.nextLine();
@@ -60,15 +72,22 @@ public class Peli {
         } 
     }
        
-        
+    /**
+     * Metodi joka tarkistaa osuiko oikeaan. Tämä metodi kertoo voititko pelin, ja katkaisee pelin samantien. Metodi kutsuu tarkista-metodia ja jos sieltä tulee kaikki oikein-vastaus, metodi palauttaa true.
+     * @param syote
+     * @return 
+     */    
     public boolean voititko(String syote){
-        String s = this.leveys + "";
+        String s = this.pituus + "";
         if (this.pelilauta.tulokset(syote).equals(s +"0")){
             return true;
         }
         return false;
     }   
-        
+    /**
+     * Tulokset palauttava metodi. Metodi kutsuu pelilauta-luokan tulokset-metodia, joka vertaa käyttäjän syötettä arvottuun riviin. Metodi kertoo kuinka monta osui oikeaan paikkaan, ja kuinka monta oikeaa väriä. if-elset on kieliopillisista syistä. Huomaa että 4 oikeassa paikassa ei ole mahdollista, koska voititko-metodia kysytään ensin.
+     * @param syote käyttäjän arvaama rivi
+     */  
     public void tulos(String syote){
         String x = this.pelilauta.tulokset(syote);
         String a = "" + x.charAt(0);
@@ -85,9 +104,17 @@ public class Peli {
     }   
     
     @Override
+    /**
+     * Koko pelin tulostava metodi
+     */
     public String toString(){
         return this.pelilauta.toString();
     }
+    /**
+     * Käyttäjällä on antamansa määrä, max 20, yritystä pelissä. Tämä metodi tarkistaa loppuiko yritykset.
+     * @param maara indeksi, joka nousee aina yhdellä kun pelaaja arvaa riviä.
+     * @return 
+     */
     public boolean loppuikoYritykset(int maara){
         if (maara <= this.rivienmaara) {
             return false;
@@ -95,6 +122,11 @@ public class Peli {
         }
         return true;
     }
+    /**
+     * Metodi, joka tarkistaa onko käyttäjän arvaaman rivin muoto oikea.
+     * @param syote käyttäjän arvaama rivi
+     * @return 
+     */
     public boolean syoteKorrekti(String syote) {
         if (!syotteenPituus(syote)) {
             return false;
@@ -108,12 +140,22 @@ public class Peli {
        
         return true;
     }
+    /**
+     * Käyttäjä ei saa arvata väärän mittaista riviä. Tämä metodi tarkistaa, että käyttäjän syötteessä on oikea määrä merkkejä
+     * @param syote käyttäjän arvaama rivi
+     * @return 
+     */
     public boolean syotteenPituus(String syote) {
-        if (syote.length() != this.leveys) {
+        if (syote.length() != this.pituus) {
             return false;
         }
         return true;
     }
+    /**
+     * Oikea rivi sisältää pelkkiä numeroita, ja tämä metodi tarkistaa että käyttäjän syöte koostuu vain numeroista.
+     * @param syote käyttäjän arvaama rivi
+     * @return 
+     */
     public boolean syotteenMerkit(String syote) {
         try {
             Integer.parseInt(syote);
@@ -123,15 +165,26 @@ public class Peli {
         }
         return true;
     }
+    /**
+     * Arvattu rivi ei saa sisältää vääriä numeroita. Tämä metodi tarkistaa onko käyttäjän syöttämän rivin numerot oikeassa haarukassa.
+     * @param syote käyttäjän arvaama rivi.
+     * @return 
+     */
     public boolean oikeitaArvoja(String syote) {
         int x = -1;
         for (int i = 0; i < syote.length(); i++) {
             x = Integer.parseInt("" + syote.charAt(i));
-            if (x < 0 || x >= this.varienmaara) {
+            if (x < 0 || x >= this.vaihtoehtojenmaara) {
                 return false;
             }
         }
         return true;
     }
-    
+    /**
+     * Oikean rivin palauttava metodi testikäyttöön
+     * @return 
+     */
+   public String oikeaRivi(){
+       return this.pelilauta.arvottu();
+   }
 }

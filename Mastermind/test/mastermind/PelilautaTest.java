@@ -38,7 +38,7 @@ public class PelilautaTest {
     }
 
    
-
+    // Jollain satunnaisjakaumafunktiolla tämänkin voinee testata?
     @Test
     public void testArvottuRivi() {
         
@@ -47,19 +47,24 @@ public class PelilautaTest {
    
     @Test
     public void testLisaaRivi() {
-       
+       String testi = pelilauta.satunnainen();
+       pelilauta.lisaaRivi(testi);
+       assertTrue(pelilauta.koko() == 1);
     }
     @Test
     public void testTulokset1(){
-        String testi = pelilauta.arvottuRivi();
+        String testi = pelilauta.arvottu();
         assertEquals("40" ,pelilauta.tulokset(testi));
     }
+    @Test
     public void testTulokset2(){
         String testi = pelilauta.satunnainen();
         assertFalse(pelilauta.tulokset(testi).contains("5"));
     }
+    @Test
     public void testTulokset3(){
         String testi = pelilauta.satunnainen();
         assertTrue(pelilauta.tulokset(testi).length() == 2);
     }
+   
 }

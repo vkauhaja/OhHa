@@ -160,4 +160,12 @@ public class PeliTest {
        boolean result = peli.oikeitaArvoja(testi);
        assertEquals(expResult, result);
     }
+      
+      @Test
+      public void testVoititko1(){
+        String testi = peli.oikeaRivi();
+        assertTrue(peli.voititko(testi));
+      }
+      
+     
 }

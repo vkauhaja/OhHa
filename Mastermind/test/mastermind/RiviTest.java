@@ -32,7 +32,7 @@ public class RiviTest {
     @Before
     public void setUp() {
         rivi1 = new Rivi(4,6,1);
-        rivi2 = new Rivi(4,6,1);
+        rivi2 = new Rivi(4,4,0);
     }
     
     @After
@@ -48,9 +48,17 @@ public class RiviTest {
     public void testToString2() {
        assertFalse(rivi1.toString().contains("6"));
     }
+   
     @Test
     public void testPoista(){
-        rivi2.poista(0);
-        assertTrue(rivi2.toString().length() == 3);
+        rivi1.poista(0);
+        assertTrue(rivi1.toString().length() == 3);
+    }
+    /**
+     * Koska rivi2 sisältää 4 eri numeroa väliltä 0-3, sen tulisi sisältää 0.
+     */
+    @Test
+    public void testSisaltyy(){
+        assertTrue(rivi2.sisaltyy(0));
     }
 }
