@@ -66,5 +66,10 @@ public class PelilautaTest {
         String testi = pelilauta.satunnainen();
         assertTrue(pelilauta.tulokset(testi).length() == 2);
     }
-   
+   @Test
+    public void testTulokset4(){
+        String testi = pelilauta.satunnainen();
+        int x = Integer.parseInt(testi);
+        assertTrue(x != 41);
+    }
 }
