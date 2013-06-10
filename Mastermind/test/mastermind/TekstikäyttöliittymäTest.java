@@ -166,6 +166,34 @@ public class TekstikäyttöliittymäTest {
         String testi = peli.oikeaRivi();
         assertTrue(peli.voititko(testi));
       }
-      
-     
+     @Test
+     public void testLuovutitko1(){
+         String testi = "luovutan";
+         assertTrue(peli.luovutitko(testi));
+     }
+     @Test
+     public void testLuovutitko2(){
+         String testi = "Luovutan";
+         assertTrue(peli.luovutitko(testi));
+     }
+     @Test
+     public void testLuovutitko3(){
+         String testi = "luovutan.";
+         assertFalse(peli.luovutitko(testi));
+     }
+      @Test
+     public void testLuovutitko4(){
+         String testi = "lol";
+         assertFalse(peli.luovutitko(testi));
+     }
+       @Test
+     public void testLuovutitko5(){
+         String testi = "Luovutan.";
+         assertFalse(peli.luovutitko(testi));
+     }
+        @Test
+     public void testLuovutitko6(){
+         String testi = "1234";
+         assertFalse(peli.luovutitko(testi));
+     }
 }
