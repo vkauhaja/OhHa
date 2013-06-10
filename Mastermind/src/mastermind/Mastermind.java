@@ -21,7 +21,7 @@ public class Mastermind {
         Scanner lukija = new Scanner(System.in);
         System.out.println("Tervetuloa pelaamaan Mastermindia.");
         Attribuutit attribuutit = new Attribuutit(lukija);
-        Peli uusiPeli = new Peli(attribuutit.yritystenMaaraInt(), attribuutit.rivinPituusInt(), attribuutit.vaihtoEhtojenMaaraInt(), attribuutit.vaikeusasteInt(), lukija);
+        Tekstikäyttöliittymä uusiPeli = new Tekstikäyttöliittymä(attribuutit.yritystenMaaraInt(), attribuutit.rivinPituusInt(), attribuutit.vaihtoEhtojenMaaraInt(), attribuutit.vaikeusasteInt(), lukija);
         uusiPeli.pelaa();
         
     }

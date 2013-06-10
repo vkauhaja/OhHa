@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Tekstikäyttöliittymäluokka
  * @author vkauhaja
  */
-public class Peli {
+public class Tekstikäyttöliittymä {
     private Pelilauta pelilauta;
     private int pituus;
     private int rivienmaara;
@@ -28,7 +28,7 @@ public class Peli {
      * @param lukija scanner, joka periytyy mainista.
      */
     
-    public Peli(int rivienmaara, int pituus, int vaihtoehtojenmaara, int vaikeusaste, Scanner lukija){
+    public Tekstikäyttöliittymä(int rivienmaara, int pituus, int vaihtoehtojenmaara, int vaikeusaste, Scanner lukija){
         
         this.vaikeusaste = vaikeusaste;
         this.rivienmaara = rivienmaara;
@@ -44,7 +44,7 @@ public class Peli {
      * Pelimekaniikkaa pyörittävä tekstikäyttöliittymämetodi. Pelin sielu henki ja runko. while-loop pyörii kunnes pelaaja osuu oikeaan tai yritykset loppuvat. Jokaisen rivin jälkeen peli palauttaa tulokset. Metodissa on myös tarkistusmetodi joka varmistaa että käyttäjän antama rivi on oikeaa muotoa, ei vääriä numeroita tai liian paljon.
      */
     public void pelaa(){
-        System.out.println("Peli alkaa. Yhdessä rivissä on " + this.pituus + " numeroa, numerot ovat väliltä 0-"+ (this.vaihtoehtojenmaara-1) + " ja sinulla on " + this.rivienmaara + " yritystä arvata oikea rivi.");
+        System.out.println("Peli alkaa. Yhdessä rivissä on " + this.pituus + " numeroa, numerot ovat väliltä 0-"+ (this.vaihtoehtojenmaara-1) + " ja sinulla on " + this.rivienmaara + " yritystä arvata oikea rivi. Komennolla \"Luovutan\" voit lopettaa pelin.");
         int i = 0;
        
         
@@ -56,6 +56,10 @@ public class Peli {
                 break;
             } 
             syote = lukija.nextLine();
+            if (luovutitko(syote)){
+                System.out.println("Luovutit pelin. Oikea rivi oli " + this.pelilauta.arvottu());
+                break;
+            }
             if (!syoteKorrekti(syote)) {
                 System.out.println("Syöte on virheellinen!");
                 i--;
@@ -71,7 +75,17 @@ public class Peli {
             
         } 
     }
-       
+    /**
+     * Metodi joka mahdollistaa luovuttamisen kesken pelin.
+     * @param syote käyttäjän antama rivi
+     * @return 
+     */
+    public boolean luovutitko(String syote){
+        if (syote.equals("Luovutan") || syote.equals("luovutan")) { //Jos ei osaa isoja kirjaimia, niin ei väliä.
+            return true;
+        }
+        return false;
+    }   
     /**
      * Metodi joka tarkistaa osuiko oikeaan. Tämä metodi kertoo voititko pelin, ja katkaisee pelin samantien. Metodi kutsuu tarkista-metodia ja jos sieltä tulee kaikki oikein-vastaus, metodi palauttaa true.
      * @param syote

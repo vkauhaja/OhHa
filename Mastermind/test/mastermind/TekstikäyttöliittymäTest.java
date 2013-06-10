@@ -18,12 +18,12 @@ import static org.junit.Assert.*;
  *
  * @author vkauhaja
  */
-public class PeliTest {
+public class TekstikäyttöliittymäTest {
     
-    public PeliTest() {
+    public TekstikäyttöliittymäTest() {
     }
     Scanner lukija;
-    Peli peli;
+    Tekstikäyttöliittymä peli;
     @BeforeClass
     public static void setUpClass() {
     }
@@ -38,7 +38,7 @@ public class PeliTest {
        // ByteArrayInputStream bais = new ByteArrayInputStream("1\n".getBytes());
        // InputStream old = System.in;
        // System.setIn(bais);
-       peli = new Peli(2, 4, 6, 1, lukija);
+       peli = new Tekstikäyttöliittymä(2, 4, 6, 1, lukija);
        // System.setIn(old);
     }
     
