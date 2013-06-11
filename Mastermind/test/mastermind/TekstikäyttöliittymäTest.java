@@ -31,7 +31,9 @@ public class TekstikäyttöliittymäTest {
     @AfterClass
     public static void tearDownClass() {
     }
-    
+    /**
+     * Tekstikäyttöliittymä-olio on nimetty edelleen nimellä peli, koska luokan vanha nimi oli "peli". Oletan ettei haittaa? En löytänyt helppoa keinoa nimetä uusiksi, ilman että pitäisi kaikki kirjoittaa uusiksi.
+     */
     
     @Before
     public void setUp() {

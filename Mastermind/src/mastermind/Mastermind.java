@@ -4,6 +4,8 @@
  */
 package mastermind;
 
+import mastermind.grafiikka.Grafiikka;
+import mastermind.attribuutit.Attribuutit;
 import java.util.Scanner;
 
 /**
@@ -21,7 +23,7 @@ public class Mastermind {
         Scanner lukija = new Scanner(System.in);
         System.out.println("Tervetuloa pelaamaan Mastermindia.");
         Attribuutit attribuutit = new Attribuutit(lukija);
-        Tekstikäyttöliittymä uusiPeli = new Tekstikäyttöliittymä(attribuutit.yritystenMaaraInt(), attribuutit.rivinPituusInt(), attribuutit.vaihtoEhtojenMaaraInt(), attribuutit.vaikeusasteInt(), lukija);
+        Tekstikäyttöliittymä uusiPeli = new Tekstikäyttöliittymä(attribuutit.getYritystenMaara(), attribuutit.getRivinPituus(), attribuutit.getVaihtoEhtojenMaara(), attribuutit.getVaikeusaste(), lukija);
         uusiPeli.pelaa();
         
     }

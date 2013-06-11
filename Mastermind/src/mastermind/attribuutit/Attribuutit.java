@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mastermind;
+package mastermind.attribuutit;
 
 import java.util.Scanner;
 
@@ -192,16 +192,16 @@ public class Attribuutit {
      * Seuraavat 4 metodia palauttavat arvot itse pelin konstruktorille.
      * @return 
      */
-    public int rivinPituusInt(){
+    public int getRivinPituus(){
         return this.rivinpituus;
     }
-    public int vaihtoEhtojenMaaraInt(){
+    public int getVaihtoEhtojenMaara(){
         return this.vaihtoehtojenmaara;
     }
-    public int vaikeusasteInt(){
+    public int getVaikeusaste(){
         return this.vaikeusaste;
     }
-    public int yritystenMaaraInt(){
+    public int getYritystenMaara(){
         return this.yritystenmaara;
     }
 }
