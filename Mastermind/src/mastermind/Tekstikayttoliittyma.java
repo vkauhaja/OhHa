@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Tekstikäyttöliittymäluokka
  * @author vkauhaja
  */
-public class Tekstikäyttöliittymä {
+public class Tekstikayttoliittyma {
     private Pelilauta pelilauta;
     private int pituus;
     private int rivienmaara;
@@ -28,7 +28,7 @@ public class Tekstikäyttöliittymä {
      * @param lukija scanner, joka periytyy mainista.
      */
     
-    public Tekstikäyttöliittymä(int rivienmaara, int pituus, int vaihtoehtojenmaara, int vaikeusaste, Scanner lukija){
+    public Tekstikayttoliittyma(int rivienmaara, int pituus, int vaihtoehtojenmaara, int vaikeusaste, Scanner lukija){
         
         this.vaikeusaste = vaikeusaste;
         this.rivienmaara = rivienmaara;

@@ -16,6 +16,9 @@ import javax.swing.WindowConstants;
 public class Grafiikka implements Runnable {
     private JFrame frame;
     
+    public Grafiikka(){
+        
+    }
    
     @Override
     public void run(){

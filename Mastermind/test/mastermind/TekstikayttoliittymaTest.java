@@ -18,12 +18,12 @@ import static org.junit.Assert.*;
  *
  * @author vkauhaja
  */
-public class TekstikäyttöliittymäTest {
+public class TekstikayttoliittymaTest {
     
-    public TekstikäyttöliittymäTest() {
+    public TekstikayttoliittymaTest() {
     }
     Scanner lukija;
-    Tekstikäyttöliittymä peli;
+    Tekstikayttoliittyma peli;
     @BeforeClass
     public static void setUpClass() {
     }
@@ -32,7 +32,7 @@ public class TekstikäyttöliittymäTest {
     public static void tearDownClass() {
     }
     /**
-     * Tekstikäyttöliittymä-olio on nimetty edelleen nimellä peli, koska luokan vanha nimi oli "peli". Oletan ettei haittaa? En löytänyt helppoa keinoa nimetä uusiksi, ilman että pitäisi kaikki kirjoittaa uusiksi.
+     * Tekstikayttoliittyma-olio on nimetty edelleen nimellä peli, koska luokan vanha nimi oli "peli". Oletan ettei haittaa? En löytänyt helppoa keinoa nimetä uusiksi, ilman että pitäisi kaikki kirjoittaa uusiksi.
      */
     
     @Before
@@ -40,7 +40,7 @@ public class TekstikäyttöliittymäTest {
        // ByteArrayInputStream bais = new ByteArrayInputStream("1\n".getBytes());
        // InputStream old = System.in;
        // System.setIn(bais);
-       peli = new Tekstikäyttöliittymä(2, 4, 6, 1, lukija);
+       peli = new Tekstikayttoliittyma(2, 4, 6, 1, lukija);
        // System.setIn(old);
     }
     
